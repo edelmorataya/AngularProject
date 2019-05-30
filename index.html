@@ -1,41 +1,25 @@
 <!DOCTYPE html>
-<html ng-app="carousel.demo">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/styles.css">
+<html ng-app="mainApp">
+	<head>
+		<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css"/>
+	</head>
 
-</head>
-<body>
-  <h1>Carousel Demo</h1>
-  <div ng-controller="CarouselDemoCtrl">
-    <carousel carousel-controls interval="5000">
-      <slide ng-repeat="slide in slides" active="slide.active">
-        <img ng-src="{{slide.image}}" class="main-image">
-        <div class="carousel-caption">
-          <p>{{slide.text}}</p>
-        </div>
-      </slide>
-    </carousel>
-    <hr>
-    <p class="text-center">Access the carousel from the controller:</p>
-    <ul class="carousel-thumbs">
-      <li class="carousel-thumb" ng-repeat="thumb in slides" ng-click="setActiveSlide($index)" style="background-image: url({{thumb.image}}); width: {{100/slides.length}}%">{{thumb.text}}</li>
-    </ul>
-    <div class="clearfix"></div>
-    <div class="text-center" style="margin-top:20px;">
-      <button class="btn btn-primary" ng-click="getActiveSlide()">Get Active Slide</button>
-      <button class="btn btn-primary" ng-click="goPrev()">Previous</button>
-      <button class="btn btn-primary" ng-click="goNext()">Next</button>
-    </div>
-  </div>
-</body>
+	<body>
+		<ui-view></ui-view>
+		<!-- Dependencies -->
+		<script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+		<script type="text/javascript" src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+		<script type="text/javascript" src="node_modules/angular-sanitize/angular-sanitize.min.js"></script>
+		<script type="text/javascript" src="node_modules/angular-animate/angular-animate.min.js"></script>
+		<script type="text/javascript" src="node_modules/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+		
+		<!-- Javascript -->
+		<script type="text/javascript" src="app/app.js"></script>
 
-  <script src="node_modules/angular/angular.min.js"></script>
-  <script src="node_modules/angular-animate/angular-animate.min.js"></script>
-  <script src="js/script.js"></script>
-  <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+		<!-- Javascript -->
+		<script type="text/javascript" src="app/js/controllers/home/homeController.js"></script>
 
+	</body>
 </html>
+
