@@ -26,6 +26,16 @@
 					controller: 'homeController',
 					controllerAs: 'vm'
 				}
+			},
+			{
+				name: 'app.carousel',
+				options: {
+					title: "Carousel",
+					url: '/carousel',
+					templateUrl: 'app/js/controllers/carousel/carousel.html',
+					controller: 'carouselController',
+					controllerAs: 'vm'
+				}
 			}
 
 		];
