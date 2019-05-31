@@ -1,7 +1,16 @@
 
 
 
-<div >
-    {{vm.carousel}}
-
-</div>
+   </div>
+   {{slide.name}}
+   <div style="height: 305px">
+     <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+       <div uib-slide ng-repeat="slide in vm.slide track by slide.id" index="slide.id">
+         <img ng-src="{{slide.image}}" style="margin:auto;">
+         <div class="carousel-caption">
+           <h4>Slide {{slide.name}}</h4>
+           <p>{{slide.dato}}</p>
+         </div>
+       </div>
+   </div>
+   </div>
