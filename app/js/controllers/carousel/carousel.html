@@ -1,8 +1,8 @@
 
 
 
-   </div>
-   {{slide.name}}
+   
+   <div ng-controller="carouselController">
    <div style="height: 305px">
      <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
        <div uib-slide ng-repeat="slide in vm.slide track by slide.id" index="slide.id">
@@ -12,5 +12,5 @@
            <p>{{slide.dato}}</p>
          </div>
        </div>
-   </div>
+    </div>
    </div>

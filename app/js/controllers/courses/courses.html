@@ -1,0 +1,59 @@
+
+
+
+<div ng-controller="coursesController" >
+    {{vm.c}}
+
+
+    <h3>Ejercicio 2</h3>
+    <hr>
+      <div class="card p-3">
+        <form>
+          <div class="form-group">
+            <h6>Agregar un Curso</h6>
+            <label>{{vm.tabHeaders[0]}}</label>
+            <input type="text" disabled="" class="form-control" id="id" ng-model="vm.course.id" placeholder="Identificador Asignado">
+            <label>{{vm.tabHeaders[1]}}</label>
+            <input type="text" class="form-control" id="nombre" ng-model="vm.course.nombre" >
+            <label>{{vm.tabHeaders[2]}}</label>
+            <input type="text" class="form-control" id="duracion" ng-model="vm.course.duracion">
+            <label>{{vm.tabHeaders[3]}} </label>
+            <input type="date" class="form-control" id="fechaini" ng-model="vm.course.fechaini" placeholder="Identificador Asignado">
+            <label>{{vm.tabHeaders[4]}} </label>
+            <input type="date" class="form-control" id="fechafin" ng-model="vm.course.fechafin" placeholder="Identificador Asignado">
+            <label>{{vm.tabHeaders[5]}} </label>
+            <input type="text" class="form-control" id="catedratico" ng-model="vm.course.catedratico">
+     
+           <button type="button" class="btn btn-info" ng-click="vm.saveCourse()">Agregar Curso</button>
+           
+           <input type="text" class="form-control" id="rem">
+           <button type="button" class="btn btn-outline-danger" ng-click="vm.iniCourse()" class="btn btn-outline-danger">Clear data</button>
+    
+        </form>
+        <br>
+        <br>
+ 
+        <table class="table table-condensed table-responsive">
+            <thead>                    
+                <td>ID</td>
+                <td>Nombre</td>
+                <td>Duracion</td>
+                <td>Fecha de Inicio</td>
+                <td>Fecha Final</td>
+                <td>Catedratico</td>
+            </thead>
+            <tbody>
+                <tr ng-repeat="course in vm.courses">
+                    <td>{{course.id}}</td>
+                    <td>{{course.nombre}}</td>
+                    <td>{{course.duration}}</td>
+                    <td>{{course.fechaini}}</td>
+                    <td>{{course.fechafin}}</td>
+                    <td>{{course.catedratico}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+      </div>
+
+</div>

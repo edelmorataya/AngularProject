@@ -36,6 +36,16 @@
 					controller: 'carouselController',
 					controllerAs: 'vm'
 				}
+			},
+			{
+				name: 'app.courses',
+				options: {
+					title: "Courses",
+					url: '/courses',
+					templateUrl: 'app/js/controllers/courses/courses.html',
+					controller: 'coursesController',
+					controllerAs: 'vm'
+				}
 			}
 
 		];
