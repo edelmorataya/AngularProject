@@ -46,6 +46,16 @@
 					controller: 'coursesController',
 					controllerAs: 'vm'
 				}
+			},
+			{
+				name: 'app.products',
+				options: {
+					title: "Products",
+					url: '/products',
+					templateUrl: 'app/js/controllers/products/products.html',
+					controller: 'productsController',
+					controllerAs: 'vm'
+				}
 			}
 
 		];
