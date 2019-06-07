@@ -1,0 +1,47 @@
+
+
+
+<div >
+    {{vm.content}}
+
+    <div ng-repeat="element in vm.content" ng-init = "mynum = $index">
+            {{mynum}}
+            <div ng-repeat="value in innerList" ng-init="mynum2 = $index">
+                    <span class="example-init">Una lista [ {{mynum}} ][ {{mynum2}} ] = {{value}};</span>
+            </div>
+    </div>
+
+            <br>
+            <br>
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <th ng-repeat="flower in vm.flowerHeaders">{{flower}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>test</tr>
+                    <tr ng-repeat="flower in vm.flowers"
+                    ng-class="flower.selected ? 'green' : flower.color"
+                    ng-click="flower.selected = !flower.selected"
+                    ng-dblclick="vm.selectDeselectAll()"
+                    ng-class-odd="'italic'"
+                    ng-class-even="'bold'">
+
+                    <td>$index: {{$index}}</td>
+                    <td>$first: {{$first}}</td>
+                    <td>$middle: {{$middle}}</td>
+                    <td>$last: {{$last}}</td>
+                    <td>$even: {{$even}}</td>
+                    <td>$odd: {{$odd}}</td>
+                    <td>Name: {{flower.name}}</td>
+                </tr>
+                </tbody>
+            </table>
+    <div>
+    </div>
+
+</div>
+
+

@@ -1,6 +1,6 @@
 (() => {
 	'use strict';
-	let mainModule = angular.module ("mainApp", ["ui.router"]);
+	let mainModule = angular.module ("mainApp", ["ui.router", "ui.bootstrap"]);
 
 	let mainModConfig = ($stateProvider, $locationProvider, $urlRouterProvider) => {
 		$locationProvider.html5Mode(false);
@@ -56,7 +56,28 @@
 					controller: 'productsController',
 					controllerAs: 'vm'
 				}
+			},
+			{
+				name: 'app.directives',
+				options: {
+					title: "directives",
+					url: '/directives',
+					templateUrl: 'app/js/controllers/directives/directives.html',
+					controller: 'directivesController',
+					controllerAs: 'vm'
+				}
+			},
+			{
+				name: 'app.store',
+				options: {
+					title: "store",
+					url: '/store',
+					templateUrl: 'app/js/controllers/store/store.html',
+					controller: 'storeController',
+					controllerAs: 'vm'
+				}
 			}
+
 
 		];
 		states.forEach(state => $stateProvider.state(state.name, state.options));

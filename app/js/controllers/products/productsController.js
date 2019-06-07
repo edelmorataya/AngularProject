@@ -18,7 +18,7 @@
             vm.products = JSON.parse (localStorage.getItem("products"));
 
             if(!vm.ptabHeaders) {
-            vm.ptabHeaders= ["1", "2", "3", "4", "5", "6"];
+            vm.ptabHeaders= ["Id", "Nombre", "Costo", "Proveedor", "No. Lote", "Fecha Cad"];
             localStorage.setItem ("tab-headers", JSON.stringify(vm.ptabHeaders));
             }
             if (!vm.products) {
