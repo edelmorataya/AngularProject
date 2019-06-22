@@ -76,8 +76,17 @@
 					controller: 'storeController',
 					controllerAs: 'vm'
 				}
+			},
+			{
+				name: 'app.people',
+				options: {
+					title: "people",
+					url: '/people',
+					templateUrl: 'app/js/controllers/people/people.html',
+					controller: 'peopleController',
+					controllerAs: 'vm'
+				}
 			}
-
 
 		];
 		states.forEach(state => $stateProvider.state(state.name, state.options));

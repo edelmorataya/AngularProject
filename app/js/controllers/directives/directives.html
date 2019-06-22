@@ -42,6 +42,49 @@
     <div>
     </div>
 
+   
+    {{vm.templates}}
+
+
+    
+    <div id="ng-include-ng-switch">
+        <h3>Template</h3>
+        
+        <select ng-model="vm.template" ng-options="t.name for t in vm.templates">
+            <option value="">none</option>
+        </select>
+        URL of the template: <code>{{vm.template.url}}</code>
+        <hr/>
+        <div class="slide-animate-container">
+            <div class="slide-animate" ng-include="vm.template.url"></div>
+        </div>
+        <br/>
+
+        <div class="slide-animate-container" ng-switch on="vm.template.name">
+            <div class="slide-animate" ng-switch-when="Orchid">
+                You have chosen the Orchid
+            </div>
+            <div class="slide-animate" ng-switch-when="Marguerite">
+                You have chosen the Marguerite
+            </div>
+            <div class="slide-animate" ng-switch-default>
+                Default option
+            </div>
+        </div>
+        <br>
+        <h3>Sample of ng-if, ng-show, ng-hide</h3><br>
+        <button ng-click="vm.ifShowHide = !vm.ifShowHide" class="btn btn-outline-success">Click me!</button>
+        <div style="background-color: gray"><h4>Div for ng-if</h4>
+            <div ng-if="vm.ifShowHide"><img src="img/f1.jpg"><strong>Content inside ng-if</div>
+        </div>
+        <div style="background-color: skyblue"><h4>Div for ng-show</h4>
+            <div ng-show="vm.evaluateIfShowHide()"><img src="img/f2.jpg"><strong>Content inside ng-show</strong></div>
+        </div>
+        <div style="background-color: #fff9c8"><h4>Div for ng-Hide</h4>
+            <div ng-hide="vm.ifShowHide"><img src="img/f3.jpg">Content inside ng-hide</div>
+        </div>
+    </div>
+
 </div>
 
 
