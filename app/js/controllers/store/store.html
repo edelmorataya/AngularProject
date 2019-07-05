@@ -16,11 +16,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="flower in vm.flowers"
-                    ng-class="flower.selected ? 'selected' : flower.color"
-                    ng-click="flower.selected = !flower.selected"
-                    ng-dblclick="vm.selectDeselectAll()"
-                    ng-class-odd="'italic'"
-                    ng-class-even="'bold'">
+                    ng-click="vm.openproduct(flower)">
 
                     <td scope="row">{{flower.price}}</td>
                     <td>{{flower.name}}</td>
@@ -32,6 +28,39 @@
                 </tbody>
             </table>
 
+           <div class="card" style="width: 18rem; margin:auto;">
+            <img class="card-img-top" data-src="{{vm.flower.image}}" >
+            <img src="{{vm.activeflower.image}}"></img>
+            <div class="card-body">
+                    
+              <p class="card-text"><strong>{{vm.activeflower.name}} </strong><br>
+              <label>Description:</label>  {{vm.activeflower.description}} <br>
+              <label>Code:</label>  {{vm.activeflower.code}} <br>
+              <label>Price:</label> {{vm.activeflower.price}}</p>
+              <button class="btn btn-primary" ng-click=vm.addCart()>Add to Cart</button>
+            </div>
+          </div>
+
+        <h3>Cart </h3>
+
+          <table class="table">
+                <thead>
+                    <tr>
+                        <th ng-repeat="flower in vm.flowerHeaders">{{flower}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in vm.cartitems">
+
+                    <td scope="row">{{item.price}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.code}}</td>
+                    <td><img style="width:100px; height:100px"src="{{item.image}}"></img></td>
+                    <td>{{item.discount}}</td>
+
+                </tr>
+                </tbody>
+            </table>
            
     <div>
     </div>
