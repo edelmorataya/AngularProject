@@ -1,0 +1,37 @@
+
+
+
+<div >
+    {{vm.test}}
+
+
+            <div class="col-xs-12">
+            <div class="form-group col-xs-10">
+                <label class="col-sm-2 control-label" for="search-text">Search</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="search-text" placeholder="Search"
+                        ng-model="vm.searchText">
+                </div>
+            </div>
+            <button type="button" class="btn btn-success col-xs-2" ng-click="vm.getpokeByQuery()">Search poke</button>
+        </div>
+
+        <table class="table table-condensed table-responsive">
+                <thead>
+                    <tr>
+                        <th scope="col" ng-repeat="header in vm.headers">{{header}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="poke in vm.pokes">
+                        <td>{{$index + 1}}</td>
+                        <td>{{poke.name}}</td>
+                        <td>{{poke.categories | array2txt }}</td>
+                        <td>{{poke.created_at}}</td>
+                        <td>{{poke.updated_at}}</td>
+                        <td><img ng-src="{{poke.icon_url}}"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+</div>

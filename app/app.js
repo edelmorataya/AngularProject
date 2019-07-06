@@ -60,7 +60,7 @@
 			{
 				name: 'app.directives',
 				options: {
-					title: "directives",
+					title: "Directives",
 					url: '/directives',
 					templateUrl: 'app/js/controllers/directives/directives.html',
 					controller: 'directivesController',
@@ -70,7 +70,7 @@
 			{
 				name: 'app.store',
 				options: {
-					title: "store",
+					title: "Store",
 					url: '/store',
 					templateUrl: 'app/js/controllers/store/store.html',
 					controller: 'storeController',
@@ -80,10 +80,21 @@
 			{
 				name: 'app.people',
 				options: {
-					title: "people",
+					title: "People",
 					url: '/people',
 					templateUrl: 'app/js/controllers/people/people.html',
 					controller: 'peopleController',
+					controllerAs: 'vm'
+				}
+			}
+			,
+			{
+				name: 'app.pokeapi',
+				options: {
+					title: "Pokeapi",
+					url: '/pokeapi',
+					templateUrl: 'app/js/controllers/pokeapi/pokeapi.html',
+					controller: 'pokeapiController',
 					controllerAs: 'vm'
 				}
 			}
