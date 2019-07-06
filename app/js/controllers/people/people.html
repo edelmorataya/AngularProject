@@ -26,10 +26,9 @@
 
                 <input ng-model="vm.search.name" class="ng-pristine ng-untouched ng-valid ng-empty">
 
-                <label>Filtrar por:</label>
-                    <label>Search: <input ng-model="vm.search.$"></label> <br>
-
-                    <label>Filter by Gender:</label>
+                    
+                <br>
+                    <label>Filtrar por genero</label>
                     <select class="form-control" ng-model="vm.search.gender">
                         <option value="M">Masculine</option>
                         <option value="F">Femenine</option>
@@ -64,7 +63,15 @@
                     </table>
 
                     
-                    <h3>Mayores de edad</h3>
+                    <h3>Filtrar por edad</h3>
+
+                    <label>Seleccionar:</label>
+                    <select class="form-control" ng-model="edad">
+                        <option value="1">Mayores de Edad</option>
+                        <option value="2">Menores de Edad</option>
+                    </select>
+
+                    
                     <table class="table">
                             <thead>
                                 <tr>
@@ -74,11 +81,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat = "person in vm.people">
+                                <tr ng-repeat = "person in vm.people | agefilter:edad:person.age">
             
                                 <td>{{person.name}}</td>
                                 <td>{{person.gender}}</td>
-                                <td>{{person.age | agefilter}}</td>
+                                <td>{{person.age}}</td>
                                 <td>
                                     <button type="button" class="btn btn-primary" ng-click="vm.modifyperson(person)">
                                         <span >Edit</span>
@@ -92,11 +99,6 @@
                             </tr>
                             </tbody>
                         </table>
-
-                    <h3>Menor de edad</h3>
-
-
-            
         </div>
     </div>
 </div>
