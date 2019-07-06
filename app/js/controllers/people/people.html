@@ -9,17 +9,94 @@
                     <div class="form-group">
                         <h3>Agregar Personas</h3>
                         <label>Name</label>
-                        <input type="text" class="form-control" id="name" ng-model="vm.product.marca">
-                        <label>Sex</label>
-                            <select class="form-control">
+                        <input type="text" class="form-control" id="name" ng-model="vm.person.name">
+                        <label>Gender</label>
+                            <select class="form-control" ng-model="vm.person.gender">
                                 <option value="F">Feminine</option>
                                 <option value="M">Masculine</option>
                                 <option value="T">Doubt</option>
                             </select>
                         <label>Age</label>
-                        <input type="text" class="form-control" id="name" ng-model="vm.product.marca">
+                        <input type="text" class="form-control" id="name" ng-model="vm.person.age">
                     </div>
+                    <button type="button" class="btn btn-info" ng-click="vm.saveperson()">Agregar Persona</button>
                 </form>
+                <hr>
+                <h3>Personas</h3>
+
+                <input ng-model="vm.search.name" class="ng-pristine ng-untouched ng-valid ng-empty">
+
+                <label>Filtrar por:</label>
+                    <label>Search: <input ng-model="vm.search.$"></label> <br>
+
+                    <label>Filter by Gender:</label>
+                    <select class="form-control" ng-model="vm.search.gender">
+                        <option value="M">Masculine</option>
+                        <option value="F">Femenine</option>
+                    </select>
+
+                <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Gender</th>
+                                <th>Age</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="person in vm.people | filter:vm.search">
+        
+                            <td >{{person.name}}</td>
+                            <td>{{person.gender}}</td>
+                            <td>{{person.age}}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary" ng-click="vm.modifyperson(person)">
+                                    <span >Edit</span>
+                                </button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger" ng-click="vm.deleteperson($index)">
+                                        <span >Delete</span>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    
+                    <h3>Mayores de edad</h3>
+                    <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Gender</th>
+                                    <th>Age</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat = "person in vm.people">
+            
+                                <td>{{person.name}}</td>
+                                <td>{{person.gender}}</td>
+                                <td>{{person.age | agefilter}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" ng-click="vm.modifyperson(person)">
+                                        <span >Edit</span>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger" ng-click="vm.deleteperson($index)">
+                                            <span >Delete</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    <h3>Menor de edad</h3>
+
+
+            
         </div>
     </div>
 </div>

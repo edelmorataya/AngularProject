@@ -4,44 +4,71 @@
 
     let peopleModule = angular.module("mainApp");
 
-    peopleModule.controller('peopleController', function () {
+    peopleModule.controller('peopleController', function(){
         let vm = this;
+        vm.c = 'this is my test result';
 
         let setDefaults = () => {
             loadData();
-            vm.inipeople();
+            vm.iniperson();
         }
-
+        
         let loadData = () => {
-            vm.peopleHeader = JSON.parse(localStorage.getItem("tab-headers"));
-            vm.people = JSON.parse(localStorage.getItem("people"));
+            vm.ptabHeaders = JSON.parse (localStorage.getItem("tab-headers"));
+            vm.people = JSON.parse (localStorage.getItem("people"));
 
-            if (!vm.peopleHeader) {
-                vm.peopleHeaders = [Name, Sex, Age];
-                localStorage.setItem("tab-headers", JSON.stringify(vm.peopleHeader));
+            if(!vm.ptabHeaders) {
+            vm.ptabHeaders= ["Id", "Nombre", "Costo", "Proveedor", "No. Lote", "Fecha Cad"];
+            localStorage.setItem ("tab-headers", JSON.stringify(vm.ptabHeaders));
             }
-            /*if (!vm.people) {
+            if (!vm.people) {
                 vm.people = [
-                    { name: Sam Smith, sex: Doubt, age: 27 }
+                    {}
                 ];
-            
+            vm.people.forEach (person => person.id = getRandomId());
             saveData();
-            }*/
 
+            }
         }
-        vm.inipeople = () => {
-            vm.people = {};
+        vm.iniperson = () => {
+            vm.person = {};
         }
 
-        /*let saveData = () => {
+        let getRandomId = () => {
+            return Math.floor(Math.random() * (+100 - +1)) + +1;
+        }
+
+        let saveData = () => {
             localStorage.setItem("people", JSON.stringify(vm.people));
-        }*/
+        }
 
-setDefaults();
+
+        vm.saveperson = () => {
+            if (vm.person.name && vm.person.gender && vm.person.age ) {
+                if (vm.person.id) {
+                    vm.people.forEach(person => { if (person.id == vm.person.id) person = vm.person; });
+                } else {
+                    vm.person.id = getRandomId();
+                    vm.people.push(vm.person);
+                }
+                saveData();
+                vm.iniperson();    
+            }
+        }
+
+        vm.modifyperson = (person) => {
+            vm.person = person;
+         }
+
+        vm.deleteperson = (index) => {
+            vm.people.splice(index, 1);
+            saveData();
+        }
+
+        setDefaults();
 
     });
 
-}
+    
 
-
-) ();
+})();
