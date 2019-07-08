@@ -1,0 +1,45 @@
+
+
+
+<div >
+    <div class="container">
+        <div ng-controller="peopleController" >
+            <div class="card p-3">
+                <form>
+                    <div class="form-group">
+                        <h3>Agregar Hobbies</h3>
+                        <label>Name</label>
+                        <input type="text" class="form-control" id="name" ng-model="vm.hobbie.name">
+                        <label>Description</label>
+                        <input type="text" class="form-control" id="name" ng-model="vm.hobbie.description">
+                    </div>
+                    <button type="button" class="btn btn-info" ng-click="vm.savehobbie()">Agregar Hobbie</button>
+                </form>
+                <hr>
+            </div>
+            <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Lastname</th>
+                            <th>Age</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="hobbie in vm.hobbies">
+    
+                        <td>{{hobbie.name}}</td>
+                        <td>{{hobbie.description}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary" ng-click="vm.modifyhobbie(hobbie)">
+                                <span >Edit</span>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger" ng-click="vm.deletehobbie($index)">
+                                    <span >Delete</span>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>

@@ -97,6 +97,26 @@
 					controller: 'pokeapiController',
 					controllerAs: 'vm'
 				}
+			},
+			{
+				name: 'app.persons',
+				options: {
+					title: "Persons",
+					url: '/persons',
+					templateUrl: 'app/js/controllers/persons/persons.html',
+					controller: 'personsController',
+					controllerAs: 'vm'
+				}
+			},
+			{
+				name: 'app.hobbies',
+				options: {
+					title: "Hobbies",
+					url: '/hobbies',
+					templateUrl: 'app/js/controllers/hobbies/hobbies.html',
+					controller: 'hobbiesController',
+					controllerAs: 'vm'
+				}
 			}
 
 		];
