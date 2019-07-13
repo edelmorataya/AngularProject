@@ -19,6 +19,7 @@
                 </form>
                 <hr>
             </div>
+            {{vm.testing}}
             <table class="table">
                     <thead>
                         <tr>
@@ -30,7 +31,7 @@
                     <tbody>
                         <tr ng-repeat="individual in vm.persons">
     
-                        <td >{{individual.name}}</td>
+                        <td>{{individual.name}}</td>
                         <td>{{individual.lastname}}</td>
                         <td>{{individual.age}}</td>
                         <td>
@@ -44,5 +45,6 @@
                             </button>
                         </td>
                     </tr>
+                    <button type="button" class="btn btn-default"  ng-click="vm.personsfunc()">func</button>
                     </tbody>
                 </table>

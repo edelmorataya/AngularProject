@@ -4,13 +4,17 @@
 
     let personsModule = angular.module("mainApp");
 
-    personsModule.controller('personsController', function(){
+    personsModule.controller('personsController', function(entService){
         let vm = this;
         vm.c = 'this is my test result';
+
 
         let setDefaults = () => {
             loadData();
             vm.iniindividual();
+            vm.entService = new entService ('individual')
+            vm.entService.save(object);
+
         }
         
         let loadData = () => {

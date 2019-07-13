@@ -56,6 +56,10 @@
             }
         }
 
+        vm.mayor = () =>{
+            return 
+        }
+
         vm.modifyperson = (person) => {
             vm.person = person;
          }
