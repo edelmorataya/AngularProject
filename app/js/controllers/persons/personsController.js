@@ -4,7 +4,7 @@
 
     let personsModule = angular.module("mainApp");
 
-    personsModule.controller('personsController', function(entService){
+    personsModule.controller('personsController', function(localStorage){
         let vm = this;
         vm.c = 'this is my test result';
 

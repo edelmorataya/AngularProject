@@ -8,8 +8,6 @@
         let query = "/query";
 
 
-        
-
     });
 
 })();
