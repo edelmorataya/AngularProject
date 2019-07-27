@@ -17,5 +17,16 @@
             ]
         }
     });
+
+    module.constant("apiUrl", {
+        pokeapi: {
+            mainUrl: "https://pokeapi.co/api/v2",
+            pokemon: "/pokemon",
+            type: "/type",
+            ability: "/ability",
+            version: "/version",
+            random: "/pokemon/" + Math.floor(Math.random() * 100) + 1
+        }
+    });
    
 })();
