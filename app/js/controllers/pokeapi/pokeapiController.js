@@ -13,7 +13,9 @@
         }
 
         let loadData = () => {
-            vm.headers = ["#", "poke", "Categories", "Created", "Updated", "Icon"];
+            vm.headersType = ["#", "Pokemon", "Type"];
+            vm.headersAbility = ["#", "Pokemon", "Ability"];
+            vm.headers = ["#", "Name", "Type", "Ability", "Icon"];
             /*getPoke();*/
         }
 
@@ -22,24 +24,36 @@
         }*/
         
 
-        vm.getpokeByNumber = () => {
-
-            $pokeapiService.getByNumber(
-                vm.searchText,
-                (response) => { if (response.data.total == 0) vm.pokes = []; else vm.pokes = new Array(response.data); console.log(JSON.stringify(vm.pokes)) },
+        vm.getPokeByNumber = () => {
+            $pokeapiService.getPokeByNumber(
+                vm.number,
+                (response) => { vm.pokes = new Array(response.data); console.log(vm.pokes)},
                 (error) => { console.error(error); }
-                
             );
-            
         }
 
-        
+        vm.getPokeByType = () => {
+            $pokeapiService.getPokeByType(
+                vm.type,
+                (response) => { vm.pokes = new Array(response.data); console.log(vm.pokes)},
+                (error) => { console.error(error); }
+            );
+        }
+
+        vm.getPokeByAbility = () => {
+            $pokeapiService.getPokeByAbility(
+                vm.identifier,
+                (response) => { vm.pokes = new Array(response.data); console.log(vm.pokes)},
+                (error) => { console.error(error); }
+            );
+        }
         vm.getRandomPoke = () => {
             $pokeapiService.getRandomPoke(
                 (response) => { vm.pokes = new Array(response.data); console.log(vm.pokes)},
                 (error) => { console.error(error); }
             );
         }
+
 
 
         setDefaults();

@@ -31,21 +31,26 @@
 
         /*----Consultar pokemon por número.---*/
 
-        this.getByNumber = (searchText, actionSuccess, actionError) => {
-            let config = buildConfiguration({ urlComplement: apiUrl.pokeapi.version + "/" + searchText});
-            console.log (config);
+        this.getPokeByNumber = (number, actionSuccess, actionError) => {
+            let config = buildConfiguration({urlComplement: apiUrl.pokeapi.pokemon + "/" + number});
             $http(config).then(actionSuccess, actionError);
         }
         /*----Consultar pokemon por tipo.---*/
+        this.getPokeByType = (type, actionSuccess, actionError) => {
+            let config = buildConfiguration({urlComplement: apiUrl.pokeapi.type + "/" + type});
+            $http(config).then(actionSuccess, actionError);
+        }
         /*----Consultar pokemon por habilidad.---*/
+
+        this.getPokeByAbility = (identifier, actionSuccess, actionError) => {
+            let config = buildConfiguration({urlComplement: apiUrl.pokeapi.ability + "/" + identifier});
+            $http(config).then(actionSuccess, actionError);
+        }
         /*----Consultar pokemon random.---*/
         this.getRandomPoke = (actionSuccess, actionError) => {
             let config = buildConfiguration({ urlComplement:  apiUrl.pokeapi.random + "/" });
             $http(config).then(actionSuccess, actionError);
         }
-
-
-
 
     });
 

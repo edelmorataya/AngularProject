@@ -4,54 +4,42 @@
 
     let hobbiesModule = angular.module("mainApp");
 
-    hobbiesModule.controller('hobbiesController', function(){
+    hobbiesModule.controller('hobbiesController', function(localStorage){
         let vm = this;
         vm.c = 'this is my test result';
 
         let setDefaults = () => {
+            localStorage = new localStorage("hobbies")
             loadData();
             vm.inihobbie();
         }
         
         let loadData = () => {
-            vm.ptabHeaders = JSON.parse (localStorage.getItem("tab-headers"));
-            vm.hobbies = JSON.parse (localStorage.getItem("hobbies"));
-
-            if(!vm.ptabHeaders) {
-            vm.ptabHeaders= ["Name", "Description"];
-            localStorage.setItem ("tab-headers", JSON.stringify(vm.ptabHeaders));
-            }
-            if (!vm.hobbies) {
-                vm.hobbies = [
-                    {}
-                ];
-            vm.hobbies.forEach (hobbie => hobbie.id = getRandomId());
-            saveData();
-
-            }
+            loadHeaders();
+            loadhobbies();            
         }
+
+        let loadHeaders = () => {
+            vm.headers = localStorage.loadHeaders();
+        }    
+
+        let loadhobbies = () => {
+            vm.hobbies = localStorage.loadData();
+        }
+
         vm.inihobbie = () => {
             vm.hobbie = {};
         }
 
-        let getRandomId = () => {
-            return Math.floor(Math.random() * (+100 - +1)) + +1;
-        }
-
-        let saveData = () => {
-            localStorage.setItem("hobbies", JSON.stringify(vm.hobbies));
-        }
-
-
         vm.savehobbie = () => {
             if (vm.hobbie.name && vm.hobbie.description ) {
                 if (vm.hobbie.id) {
-                    vm.hobbies.forEach(hobbie => { if (hobbie.id == vm.hobbie.id) hobbie = vm.hobbie; });
+                    localStorage.update(vm.hobbie);
                 } else {
-                    vm.hobbie.id = getRandomId();
+                    vm.hobbie.id = Math.floor(Math.random() * 100) + 1;
                     vm.hobbies.push(vm.hobbie);
                 }
-                saveData();
+                setDefaults();
                 vm.inihobbie();    
             }
         }
@@ -59,12 +47,12 @@
         vm.modifyhobbie = (hobbie) => {
             vm.hobbie = hobbie;
          }
-
+    
         vm.deletehobbie = (index) => {
-            vm.hobbies.splice(index, 1);
+            vm.hobbie.splice(index, 1);
             saveData();
         }
-
+    
         setDefaults();
 
     });
@@ -72,3 +60,4 @@
     
 
 })();
+

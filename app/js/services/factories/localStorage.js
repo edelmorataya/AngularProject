@@ -3,62 +3,61 @@
 
     var module = angular.module("mainApp");
 
-    module.factory("localStorage", function (entService){
+    module.factory("localStorage", function (entityData){
 
-        let entSer = function (a){
+        let entityService = function (entityName){
             this.loadData = () => {
-                let data = JSON.parse(localStorage.getItem(a));
+                let data = JSON.parse(localStorage.getItem(entityName));
                 if (!data){
-                    return entService[a].staticData;
+                    return entityData[entityName].staticData;
                 }
                 return data;
             }
 
             this.loadHeaders = () => {
-                return entService[entName].headers;     
+                return entityData[entityName].headers; 
             }
 
-            this.save = (ent) => {
-                let ents = this.loadData();
+            this.save = (entity) => {
+                let entities = this.loadData();
 
-                ents.sort ((x, z) => {
-                    if (x.id < z.id)
+                entities.sort((a, b) => {
+                    if (a.id < b.id)
                         return -1;
-                    if (x.id > z.id)
+                    if (a.id > b.id)
                         return 1;
                     return 0;
                 });
+        
+                let newId = entities[entities.length - 1].id + 1;
+                entity.id = newId;
 
-                let addId = ents[ents.length -1].id + 1;
-                ent.id = addId;
-
-                ents.push(ent);
-                localStorage.setItem(entName, JSON.stringify(ents));
-
+                entities.push(entity);
+                localStorage.setItem(entityName, JSON.stringify(entities));
             }
 
-            this.replace = (ents) => {
-                localStorage.setItem(entName, JSON.stringify(ents));
+            this.replace = (entities) => {
+                localStorage.setItem(entityName, JSON.stringify(entities));
             }
 
-            this.update = (entUpdate) => {
-                let ents = this.loadData();
-                let index = ents.map(ent => ent.id).indexOf(entUpdate.id);
+            this.update = (entityToUpdate) => {
+                let entities = this.loadData();
+                let index = entities.map(entity => entity.id).indexOf(entityToUpdate.id);
 
-                if (index != -1){
-                    ents[index] = entUpdate;
+                if (index != -1) {
+                    entities[index] = entityToUpdate;
                 }
 
-                this.replace(ents);
+                this.replace(entities);
             }
 
             this.delete = (index) => {
-                let ents = this.loadData();
-                ents.splice(index, 1);
-                this.replace(ents);
+                let entities = this.loadData();
+                entities.splice(index, 1);
+                this.replace(entities);
             }
         };
 
-        return entSer;
+        return entityService;
     });
 })();
